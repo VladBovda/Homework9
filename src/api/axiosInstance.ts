@@ -1,26 +1,23 @@
 import axios from "axios";
-import { store } from "../store/store";
+import { history } from "../navigate";
 
 const axiosInstance = axios.create({
-  baseURL: "https://api.example.com",
+  baseURL: "https://playground.zenberry.one/",
   timeout: 10000,
 });
 
 axiosInstance.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
-    console.log(token);
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
-      console.log(config);
     }
 
     return config;
   },
 
   (error) => {
-    console.log(error);
     return Promise.reject(error);
   },
 );
@@ -29,8 +26,9 @@ axiosInstance.interceptors.response.use(
   (response) => response,
 
   (error) => {
-    if (error.response.status === 401 || error.response.status === 403) {
-      store.dispatch({ type: "isAllowed", payload: false });
+    if (error.response?.status === 401 || error.response?.status === 403) {
+      localStorage.removeItem("token");
+      history.push("/login");
     }
     return Promise.reject(error);
   },
