@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Navigate } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function ProtectedRoute({ children, isAllowed }: { children: any, isAllowed: boolean }) {
+  if (!isAllowed) {
+
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
 }
 
-export default App;
+import { Routes, Route } from "react-router-dom";
+
+function App({ isAuthenticated }: { isAuthenticated: boolean }) {
+  return (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+
+      <Route
+        path="/protected"
+        element={
+          <ProtectedRoute isAllowed={isAuthenticated}>
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
+  );
+}
