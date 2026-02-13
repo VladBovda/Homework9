@@ -1,7 +1,7 @@
 import { Box, Typography, Avatar, IconButton, CircularProgress } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { ExhibitInterface } from "../interfaces/exhibitInterface";
-import useCommentStripe from "./useCommentStripe";
+import useCommentStripe from "../hooks/useCommentStripe";
 
 interface CommentStripeProps {
   exhibit: ExhibitInterface;

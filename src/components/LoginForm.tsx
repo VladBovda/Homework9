@@ -1,5 +1,5 @@
 import { Box, Button, TextField, Typography, Container, Paper } from '@mui/material';
-import useLoginForm from './useLoginForm';
+import useLoginForm from '../hooks/useLoginForm';
 
 const LoginForm = () => {
     const { formik, goToRegister } = useLoginForm();

@@ -1,6 +1,6 @@
 import { Box, Pagination, Typography } from "@mui/material";
 import { getUserExhibits } from "../api/exhibitActions";
-import usePaginatedExhibits from "../components/PaginationLogic";
+import usePaginatedExhibits from "../hooks/PaginationLogic";
 import Post from "../components/Post";
 
 const MyExhibits = () => {

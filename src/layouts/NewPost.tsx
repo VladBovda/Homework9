@@ -1,7 +1,7 @@
 import { Box, Paper, Typography, TextField, Button, IconButton } from "@mui/material";
 import ImageIcon from "@mui/icons-material/Image";
 import CloseIcon from "@mui/icons-material/Close";
-import useNewPost from "../components/useNewPost";
+import useNewPost from "../hooks/useNewPost";
 
 const NewPost = () => {
   const { formik, preview, handleImageChange, removeImage } = useNewPost();

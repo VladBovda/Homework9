@@ -1,7 +1,7 @@
 import { Box, TextField, IconButton } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { ExhibitInterface } from "../interfaces/exhibitInterface";
-import useComment from "./useComment";
+import useComment from "../hooks/useComment";
 
 interface CommentProps {
   exhibit: ExhibitInterface;

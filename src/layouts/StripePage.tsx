@@ -1,5 +1,5 @@
 import { Box, Pagination } from "@mui/material";
-import usePaginatedExhibits from "../components/PaginationLogic";
+import usePaginatedExhibits from "../hooks/PaginationLogic";
 import { getAllExhibits } from "../api/exhibitActions";
 import Post from "../components/Post";
 
