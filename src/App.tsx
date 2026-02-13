@@ -8,6 +8,7 @@ import ControlBar from "./components/ControlBar";
 import RegisterPage from "./layouts/RegisterPage";
 import StripePage from "./layouts/StripePage";
 import { SnackbarProvider } from "./contexts/SnackbarContext";
+import useSocket from "./hooks/useSocket";
  
 function ProtectedRoute({ children, isAllowed }: { children: any, isAllowed: boolean }) {
   if (!isAllowed) {
@@ -22,6 +23,7 @@ function App() {
 
   return (
     <SnackbarProvider>
+      <SocketListener />
       <ControlBar />
       <Routes>
         <Route path="/" element={<StripePage />} />
@@ -46,6 +48,11 @@ function App() {
       </Routes>
     </SnackbarProvider>
   );
+}
+
+function SocketListener() {
+  useSocket();
+  return null;
 }
 
 export default App;
