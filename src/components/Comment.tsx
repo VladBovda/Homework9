@@ -8,7 +8,9 @@ interface CommentProps {
 }
 
 const Comment = ({ exhibit }: CommentProps) => {
-  const { text, setText, handleSubmit, handleKeyDown } = useComment(exhibit.id);
+  const { text, setText, handleSubmit, handleKeyDown, isAuthenticated } = useComment(exhibit.id);
+
+  if (!isAuthenticated) return null;
 
   return (
     <Box display="flex" alignItems="center" gap={1}>
