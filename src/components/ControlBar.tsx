@@ -35,6 +35,15 @@ const ControlBar = () => {
           >
             NEW POST
           </Button>
+
+          <Button
+            component={RouterLink}
+            to="/home"
+            color="inherit"
+            sx={{ fontWeight: 600 }}
+          >
+            MY EXHIBITS
+          </Button>
         </Box>
 
         <Box sx={{ flexGrow: 1, textAlign: "center" }}>
