@@ -1,18 +1,20 @@
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  Typography,
-  Avatar,
-  Divider,
-  Box
-} from "@mui/material";
+import { Card, CardHeader, CardContent, Typography, Avatar, Divider, Box, IconButton } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { ExhibitInterface } from "../interfaces/exhibitInterface";
 import Comment from "./Comment";
 import CommentStripe from "./CommentStripe";
-import {useState} from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
+import { deleteExhibit } from "../api/exhibitActions";
 
-const Post = ({ exhibit }: { exhibit: ExhibitInterface }) => {
+interface PostProps {
+  exhibit: ExhibitInterface;
+  onDelete?: () => void;
+}
+
+const Post = ({ exhibit, onDelete }: PostProps) => {
+  const currentUserId = useSelector((state: RootState) => state.user.userId);
   const [imageError, setImageError] = useState(false);
   const [showComments, setShowComments] = useState(false);
   return (
@@ -38,6 +40,19 @@ const Post = ({ exhibit }: { exhibit: ExhibitInterface }) => {
           <Typography fontWeight={600}>
             {exhibit.user.username}
           </Typography>
+        }
+        action={
+          String(currentUserId) === String(exhibit.user.id) ? (
+            <IconButton
+              onClick={() => {
+                deleteExhibit(exhibit.id).then(() => onDelete?.());
+              }}
+              size="small"
+              color="error"
+            >
+              <DeleteIcon fontSize="small" />
+            </IconButton>
+          ) : undefined
         }
       />
 

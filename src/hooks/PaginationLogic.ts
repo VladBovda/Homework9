@@ -24,7 +24,7 @@ function usePaginatedExhibits(fetchExhibits: PaginatedFetcher) {
     setPage(value);
   };
 
-  return { page, lastPage, handlePageChange, exhibits };
+  return { page, lastPage, handlePageChange, exhibits, reload: load };
 }
 
 export default usePaginatedExhibits;

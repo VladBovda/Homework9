@@ -18,3 +18,7 @@ export const getUserExhibits = async (page: number = 1, limit: number = 10) => {
     }
 };
 
+export const deleteExhibit = async (exhibitId: string | number) => {
+    return await axiosInstance.delete(`/api/exhibits/${exhibitId}`);
+};
+

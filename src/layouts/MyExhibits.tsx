@@ -4,7 +4,7 @@ import usePaginatedExhibits from "../hooks/PaginationLogic";
 import Post from "../components/Post";
 
 const MyExhibits = () => {
-  const { page, lastPage, handlePageChange, exhibits } = usePaginatedExhibits(getUserExhibits);
+  const { page, lastPage, handlePageChange, exhibits, reload } = usePaginatedExhibits(getUserExhibits);
 
   return (
     <Box
@@ -25,7 +25,7 @@ const MyExhibits = () => {
       {exhibits.length === 0 ? (
         <Typography color="text.secondary">You have no exhibits yet.</Typography>
       ) : (
-        exhibits.map((exhibit) => <Post key={exhibit.id} exhibit={exhibit} />)
+        exhibits.map((exhibit) => <Post key={exhibit.id} exhibit={exhibit} onDelete={reload} />)
       )}
     </Box>
   );

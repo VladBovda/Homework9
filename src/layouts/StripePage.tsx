@@ -4,7 +4,7 @@ import { getAllExhibits } from "../api/exhibitActions";
 import Post from "../components/Post";
 
 const StripePage = () => {
-  const { page, lastPage, handlePageChange, exhibits } = usePaginatedExhibits(getAllExhibits);
+  const { page, lastPage, handlePageChange, exhibits, reload } = usePaginatedExhibits(getAllExhibits);
 
   return (
     <Box
@@ -23,7 +23,7 @@ const StripePage = () => {
       />
 
       {exhibits.map((exhibit) => (
-        <Post key={exhibit.id} exhibit={exhibit} />
+        <Post key={exhibit.id} exhibit={exhibit} onDelete={reload} />
       ))}
     </Box>
   );
